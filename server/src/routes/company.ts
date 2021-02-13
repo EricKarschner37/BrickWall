@@ -31,7 +31,7 @@ router.post(`/`, async (req, res) => {
 router.get(`/:companyId`, async (req, res) => {
   const { companyId } = req.params;
   const { headquarters, interviews, offers, reviews } = req.query;
-  const result = await prisma.company.findOne({
+  const result = await prisma.company.findUnique({
     where: { id: +companyId },
     include: {
       headquarters: headquarters === 'true',
