@@ -15,7 +15,7 @@ export const useCompany = (
 
   React.useEffect(() => {
     setIsLoading(true);
-    v1.get(`/company/${companyId}`, {
+    v1.get(`brickwall.csh.rit.edu/api/company/${companyId}`, {
       params: { headquarters, interviews, offers, reviews }
     }).then(res => {
       setCompany(res.data);
@@ -37,7 +37,7 @@ export const useCompanies = (
 
   React.useEffect(() => {
     setIsLoading(true);
-    v1.get('/company', {
+    v1.get('https://brickwall.csh.rit.edu/api/company', {
       params: { headquarters, interviews, offers, reviews }
     }).then(res => {
       setCompanies(res.data);

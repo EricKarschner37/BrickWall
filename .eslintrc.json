@@ -4,7 +4,6 @@
     "es6": true
   },
   "extends": [
-    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "globals": {
@@ -22,7 +21,6 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "prettier",
     "import",
     "react",
     "react-hooks"
