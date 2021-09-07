@@ -19,6 +19,12 @@ This site is written using a [React](https://reactjs.org/) front end, with a [Ex
 
 ### Instructions
 
+Set a local database environment variable to use
+
+```bash
+export DATABASE_URL=postgresql://brickwall:password@postgres.host.url/brickwall?schema=public'
+```
+
 1. `yarn`
 2. `yarn start`
 
