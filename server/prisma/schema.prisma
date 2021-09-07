@@ -21,40 +21,49 @@ model Company {
   name         String      @unique
   website      String      @unique
   logo         String?     @unique
-  headquarters City?
+  headquarters City?       @relation(fields: [cityId], references: [id])
   glassdoor    String?     @unique
   Interviews   Interview[]
   JobReviews   JobReview[]
   Offers       Offer[]
   Positions    Position[]
+  cityId       Int?
 }
 
 model Position {
-  id              Int      @id @default(autoincrement())
-  company         Company
-  title           String
-  job_type        jobtype
+  id        Int         @id @default(autoincrement())
+  company   Company     @relation(fields: [companyId], references: [id])
+  title     String
+  job_type  jobtype
+  Interview Interview[]
+  JobReview JobReview[]
+  Offer     Offer[]
+  companyId Int
 }
 
 model Interview {
   id              Int      @id @default(autoincrement())
   member          String
-  company         Company
-  position        Position
+  company         Company  @relation(fields: [companyId], references: [id])
+  position        Position @relation(fields: [positionId], references: [id])
   interviewcount  Int      @default(1)
   codingchallenge Boolean? @default(false)
   onsite          Boolean? @default(false)
   body            String?
+  companyId       Int
+  positionId      Int
 }
 
 model JobReview {
   id         Int       @id @default(autoincrement())
   member     String
-  position   Position
-  company    Company
+  position   Position  @relation(fields: [positionId], references: [id])
+  company    Company   @relation(fields: [companyId], references: [id])
   start_date DateTime
   end_date   DateTime?
   body       String?
+  positionId Int
+  companyId  Int
 }
 
 model Offer {
@@ -62,7 +71,7 @@ model Offer {
   member        String
   pay           Float
   paytype       paytype
-  position      Position
+  position      Position  @relation(fields: [positionId], references: [id])
   offerdate     DateTime?
   offerdeadline DateTime?
   housing       housing?
@@ -70,10 +79,13 @@ model Offer {
   stocks        Float?
   signing_bonus Float?
   relocation    Float?
-  location      City?
-  remote        Boolean? @default(false)
-  company       Company
+  location      City?     @relation(fields: [cityId], references: [id])
+  remote        Boolean?  @default(false)
+  company       Company   @relation(fields: [companyId], references: [id])
   body          String?
+  positionId    Int
+  cityId        Int?
+  companyId     Int
 }
 
 enum housing {

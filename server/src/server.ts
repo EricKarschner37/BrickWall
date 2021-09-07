@@ -1,10 +1,10 @@
 import * as bodyParser from 'body-parser';
 
+import cors, { CorsOptions } from 'cors';
 import express, { Router } from 'express';
 
 import city from './routes/city';
 import company from './routes/company';
-import cors from 'cors';
 import interview from './routes/interview';
 import offer from './routes/offer';
 import path from 'path';
@@ -12,10 +12,22 @@ import position from './routes/position';
 
 const app = express();
 
-const corsOptions = {
-  origin: 'http://localhost:8080',
-  optionsSuccessStatus: 204
+const allowed = [
+  'https://brickwall.csh.rit.edu',
+  'http://localhost:8080',
+  'http://localhost:3000'
+];
+const corsOptions: CorsOptions = {
+  optionsSuccessStatus: 204,
+  origin: function (origin, callback) {
+    if (origin && allowed.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 };
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 

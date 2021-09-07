@@ -89,7 +89,7 @@ router.post(`/upload/:companyId`, uploadS3.single('file'), async (req, res) => {
   await prisma.company.update({
     where: { id: +companyId },
     data: {
-      logo: req.file.originalname
+      logo: req?.file?.originalname
     }
   });
   res.json(req.file);
