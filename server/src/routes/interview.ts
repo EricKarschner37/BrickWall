@@ -26,7 +26,7 @@ router.post(`/`, async (req, res) => {
   res.json(result);
 });
 
-router.put(`/:offerId`, async (req, res) => {
+router.put(`/:interviewId`, async (req, res) => {
   const { interviewId } = req.params;
   const result = await prisma.interview.update({
     where: { id: +interviewId },

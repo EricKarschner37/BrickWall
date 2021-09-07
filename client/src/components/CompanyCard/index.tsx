@@ -66,6 +66,7 @@ export const CompanyCard: React.FunctionComponent<CompanyCardProps> = ({
           <TooltipHover
             idName={`reviews-count-${company.name
               .replace(/\s+/g, '-')
+              .replace(/[()]/g, '')
               .toLowerCase()}`}
             label={`${
               company.JobReviews ? company.JobReviews.length : null
@@ -78,6 +79,7 @@ export const CompanyCard: React.FunctionComponent<CompanyCardProps> = ({
           <TooltipHover
             idName={`interviews-count-${company.name
               .replace(/\s+/g, '-')
+              .replace(/[()]/g, '')
               .toLowerCase()}`}
             label={`${
               company.Interviews ? company.Interviews.length : null
@@ -90,6 +92,7 @@ export const CompanyCard: React.FunctionComponent<CompanyCardProps> = ({
           <TooltipHover
             idName={`offers-count-${company.name
               .replace(/\s+/g, '-')
+              .replace(/[()]/g, '')
               .toLowerCase()}`}
             label={`${company.Offers ? company.Offers.length : null} Offers`}
           >
