@@ -34,6 +34,7 @@
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/ban-ts-comment": "off",
+    "linebreak-style": ["error", "unix"],
     "sort-imports": "warn"
   },
   "settings": {
