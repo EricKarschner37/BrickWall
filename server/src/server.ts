@@ -12,20 +12,13 @@ import position from './routes/position';
 
 const app = express();
 
-const allowed = [
-  'https://brickwall.csh.rit.edu',
-  'http://localhost:8080',
-  'http://localhost:3000'
-];
 const corsOptions: CorsOptions = {
   optionsSuccessStatus: 204,
-  origin: function (origin, callback) {
-    if (origin && allowed.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
+  origin: [
+    'https://brickwall.csh.rit.edu',
+    'http://localhost:8080',
+    'http://localhost:3000'
+  ]
 };
 
 app.use(cors(corsOptions));
